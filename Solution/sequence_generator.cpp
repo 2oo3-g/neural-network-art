@@ -59,15 +59,23 @@ private:
 
             outFile << endl;
         }
+
+        outFile.close();
     }
 
 public:
     SequenceGenerator();
 
-
     void runEngine(char *fileName)
     {
         loadInputSequence(fileName);
+
+        for(auto i = 0; i < 5; i++){
+            vector<int> temp = perturbateByShift();
+
+            outputSequences[i] = temp;
+        }
+
         saveOutputSequences();
     }
 };
